@@ -1,0 +1,158 @@
+.App {
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.Select{
+  height: 250px;
+  overflow-y: auto;
+}
+
+.DivKcal{
+  background-color: #F5F5F5;
+  padding: 20px;
+  margin-top: 40px;
+}
+
+.DivTitle{
+  font-size: 32px;
+}
+
+.DivAlimentos{
+  flex: 1;
+}
+
+.divLine{
+  cursor: pointer;
+}
+
+.lineActive{
+  background-color: #F5F5F5;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.Alimento1 {
+  font-size: 25px;
+  font-style: bold;
+}
+
+.Alimento2 {
+  font-size: 25px;
+  font-style: bold;
+}
+
+.DivKcal1 {
+  background-color: #fb6161
+}
+
+.DivKcal2 {
+  background-color: #61e9fb
+}
+
+.DivResultado {
+  text-align: center;
+  font-size: larger;
+  font-style: bold;
+  background-color: #61fb87;
+  width: 100%;
+  height: 52px;
+}
+
+.lineActive1 {
+  background-color: #fb6161
+}
+
+.lineActive2 {
+  background-color: #61e9fb
+}
+
+.DivTitulo {
+  text-align: center;
+  font-size: 50px;
+}
+
+.DivSubTitulo {
+  font-size: 20px;
+  font-style: italic;
+  background-color:#dadada;
+}
+
+.DivBoxAlimentos{
+  display: flex;
+}
+
+.DivTituloIMC{
+  text-align: center;
+  font-size: 30px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.InputIMC{
+  width: 120px;
+  font-size: 14px;
+  margin-left: 10px;
+  margin-right: 10px;
+  text-align: center;
+}
+.ButtonIMC{
+  width: 120px;
+  height: 40px;
+  margin-left: 10px;
+  margin-right: 10px;
+  background-color: #61fb87;
+  border: initial;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.DivInputs{
+  display: flex;
+}
+.ImgResult{
+  font-weight: bold;
+  margin-top: 15px;
+}
+.buttonRemove{
+  cursor: pointer;
+}
