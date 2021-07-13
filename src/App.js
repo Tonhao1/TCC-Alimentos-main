@@ -97,36 +97,38 @@ function App() {
   
   return (
     <div className="App">
-      <div className="DivTitulo">FitFood</div>
-      <div className="Div">
+      <div className="BannerMain">
+        <div className="DivTitulo">FitFood</div>
+      </div>
+      <div className="MainBox">
         <div className="DivSubTitulo">Cada porção equivale a 100g</div>
         <div className="DivBoxAlimentos">
           <div className="DivAlimentos1">
-            <p className="Alimento1">Alimento que será substituído</p>
+            <div className="Alimento1">Alimento que será substituído</div>
             <div className="Select">
               {alimentos.map((a, k) => <div key={k} className={primeiroAlimento.id && a.id == primeiroAlimento.id?'divLine lineActive1':'divLine'} onClick={() => setAlimento(a)}>{a.description}</div>)}
             </div>
             <div className="DivKcal1">
               <div className="DivTitle">Calorias</div>
               {primeiroAlimento.attributes?(
-                <div>{primeiroAlimento.attributes.energy.kcal.toFixed(2)}</div>
+                <div className="ValorCaloria">{primeiroAlimento.attributes.energy.kcal.toFixed(2)}</div>
               ):(
-                <div>0</div>
+                <div className="ValorCaloria">0</div>
               )}
             </div>
           </div>
           
           <div className="DivAlimentos2">
-          <p className="Alimento2">Alimento substituto</p>
+          <div className="Alimento2">Alimento substituto</div>
             <div className="Select">
               {alimentos.map((a, k) => <div key={k} className={primeiroAlimento2.id && a.id == primeiroAlimento2.id?'divLine lineActive2':'divLine'} onClick={() => setSessionAlimento(a)}>{a.description}</div>)}
             </div>
             <div className="DivKcal2">
               <div className="DivTitle">Calorias</div>
               {primeiroAlimento2.attributes?(
-                <div>{primeiroAlimento2.attributes.energy.kcal.toFixed(2)}</div>
+                <div className="ValorCaloria">{primeiroAlimento2.attributes.energy.kcal.toFixed(2)}</div>
               ):(
-                <div>0</div>
+                <div className="ValorCaloria">0</div>
               )}
             </div>
           </div>
@@ -143,6 +145,30 @@ function App() {
           )}
         </div>
       </div>
+      {somaCalorias !== 0&&(
+        <>
+          <div className="DivTituloIMC">Items Selecionados</div>
+          <table>
+            <thead>
+              <tr className="FundoItems">
+                <th style={{width: 400, textAlign: 'left', padding: 10}}>Item</th>
+                <th style={{width: 100, textAlign: 'center'}}>Calorias</th>
+                <th style={{width: 100, textAlign: 'center'}}>Remover</th>
+              </tr>
+            </thead>
+            <tbody>
+              {listaSession && listaSession.map((a, k) => (
+                <tr key={k} style={{backgroundColor: '#f3f3f3'}}>
+                  <td style={{textAlign: 'left', padding: 10}}>{a.description}</td>
+                  <td style={{textAlign: 'center'}}>{a.attributes.energy.kcal.toFixed(2)}</td>
+                  <td><button className="buttonRemove" onClick={() => removeFromCache(k)}>X</button></td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <h4>Calorias: {somaCalorias.toFixed(2)}</h4>
+        </>
+      )}
 
       <div className="DivTituloIMC">Calcular IMC</div>
       <div className="DivInputs">
@@ -157,37 +183,14 @@ function App() {
           </div>
           <div className="ImgResult">
             <b>Items sugeridos</b>
-            <div>
-              {alimentosIMC.map((p, k) => <div key={k}>{p.description}</div>)}
+            <div className="mt10_sugeridos">
+              {alimentosIMC.map((p, k) => <div className="mt10_sugeridos" key={k}>{p.description}</div>)}
             </div>
           </div>
         </>
       )}
 
-      {somaCalorias !== 0&&(
-        <>
-          <div className="DivTituloIMC">Items Selecionados</div>
-          <table>
-            <thead>
-              <tr>
-                <th style={{width: 400, textAlign: 'left'}}>Item</th>
-                <th style={{width: 100, textAlign: 'left'}}>Calorias</th>
-                <th>Remover</th>
-              </tr>
-            </thead>
-            <tbody>
-              {listaSession && listaSession.map((a, k) => (
-                <tr key={k}>
-                  <td style={{textAlign: 'left'}}>{a.description}</td>
-                  <td style={{textAlign: 'left'}}>{a.attributes.energy.kcal.toFixed(2)}</td>
-                  <td><button className="buttonRemove" onClick={() => removeFromCache(k)}>X</button></td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-          <h4>Calorias: {somaCalorias.toFixed(2)}</h4>
-        </>
-      )}
+      
     </div>
   );
 }
